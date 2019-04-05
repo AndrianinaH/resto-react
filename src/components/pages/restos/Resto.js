@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
-import Header from "../layouts/Header";
+import Header from "../../layouts/Header";
+import CardResto from './CardResto'
 
 export class Resto extends Component {
   render() {
     return (
-     <Fragment>
-         sss
-     </Fragment>
+      <Fragment>
+        <CardResto />
+      </Fragment>
     );
   }
 }

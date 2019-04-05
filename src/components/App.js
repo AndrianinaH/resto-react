@@ -33,9 +33,7 @@ class App extends Component {
           </Grid>
           <Grid item xs={12} sm={8}>
             {/* navigation des pages */}
-            <Paper className="papers" elevation={1}>
-              <Router />
-            </Paper>
+            <Router />
           </Grid>
           <Grid item xs>
             {/* afficher nos commandes */}

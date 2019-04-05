@@ -2,6 +2,9 @@ body{
     margin: 0px;
     background: #e0f7fa;
 }
-.papers{
-    margin-left: 20px;
+
+a, a:hover{
+    text-decoration:none !important;
+    color: #FFF !important;
+    cursor: pointer;
 }

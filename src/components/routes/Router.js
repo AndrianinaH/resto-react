@@ -4,7 +4,7 @@ import { Route, Link, BrowserRouter, Redirect, Switch } from "react-router-dom";
 import Menu from "../pages/Menu";
 import Login from "../pages/Login";
 import Admin from "../pages/Admin";
-import Resto from "../pages/Resto";
+import Resto from "../pages/restos/Resto";
 
 const loggedIn = false;
 
