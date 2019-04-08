@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../layouts/Header";
+import { Link } from "react-router-dom";
 
 
 export class Menu extends Component {
@@ -8,6 +8,8 @@ export class Menu extends Component {
     const { match: { params } } = this.props;
     return (
       <div>
+        <Link to="/">to home</Link>
+        <br></br>
         Menu {params.id}
       </div>
     );

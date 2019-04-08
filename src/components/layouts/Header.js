@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -24,22 +24,19 @@ function Header(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <BrowserRouter>
-        <AppBar position="sticky" color="primary">
-          <Toolbar>
-            <Typography
-              component={Link}
-              exact
-              to="/"
-              variant="h6"
-              color="inherit"
-              className={classes.grow}
-            >
-              Allo Resto
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </BrowserRouter>
+      <AppBar position="sticky" color="primary">
+        <Toolbar>
+          <Typography
+            component={Link}
+            to="/"
+            variant="h6"
+            color="inherit"
+            className={classes.grow}
+          >
+            Allo Resto
+          </Typography>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 }
