@@ -4,7 +4,7 @@ import { Route, Link, BrowserRouter, Redirect, Switch } from "react-router-dom";
 import Menu from "../pages/Menu";
 import Login from "../pages/Login";
 import Admin from "../pages/Admin";
-import Resto from "../pages/restos/Resto";
+import ListResto from "../pages/restos/ListResto";
 
 const loggedIn = false;
 
@@ -12,7 +12,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Resto} />
+        <Route path="/" exact component={ListResto} />
         <Route path="/menu/:id" exact component={Menu} />
         <Route path="/login" exact component={Login} />
         <Route

@@ -3,7 +3,7 @@ import Header from "../../layouts/Header";
 import CardResto from "./CardResto";
 import { Grid,Typography,Paper } from "@material-ui/core";
 
-export class Resto extends Component {
+export class ListResto extends Component {
   constructor(props) {
     super(props);
 
@@ -24,7 +24,7 @@ export class Resto extends Component {
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <Paper className="papers">
-              <Typography gutterBottom variant="h6" color="primary" align="center" component="h2">
+              <Typography variant="h6" color="primary" align="center" component="h2">
               Liste des restaurants
               </Typography>
             </Paper>
@@ -36,4 +36,4 @@ export class Resto extends Component {
   }
 }
 
-export default Resto;
+export default ListResto;
