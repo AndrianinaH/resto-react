@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Header from "../../layouts/Header";
 import CardResto from "./CardResto";
-import { Grid,Typography } from "@material-ui/core";
+import { Grid,Typography,Paper } from "@material-ui/core";
 
 export class Resto extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export class Resto extends Component {
   render() {
     console.log(this.state.allResto);
     let restos = this.state.allResto.map((resto, index) => (
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} md={6} sm={6}>
         <CardResto key={index} />
       </Grid>
     ));
@@ -23,9 +23,11 @@ export class Resto extends Component {
       <Fragment>
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            <Typography gutterBottom variant="h3" color="primary" align="center" component="h2">
-            Liste des restaurants
-            </Typography>
+            <Paper className="papers">
+              <Typography gutterBottom variant="h6" color="primary" align="center" component="h2">
+              Liste des restaurants
+              </Typography>
+            </Paper>
           </Grid>
           {restos}
         </Grid>

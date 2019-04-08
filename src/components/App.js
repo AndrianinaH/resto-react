@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "./layouts/Header";
 import Router from "./routes/Router";
 import { MuiThemeProvider,createMuiTheme,Grid,Paper} from "@material-ui/core";
-import { cyan } from "@material-ui/core/colors";
+import { cyan,grey } from "@material-ui/core/colors";
 import Commande from "./pages/commandes/Commande";
 import "./Style.css";
 
@@ -17,12 +17,19 @@ class App extends Component {
     const theme = createMuiTheme({
       palette: {
         primary: {
-          light: cyan[300],
-          main: cyan[500],
-          dark: cyan[700],
+          light: cyan[400],
+          main: cyan[700],
+          dark: cyan[900],
+          contrastText: "#FFF"
+        },
+        secondary: {
+          light: grey[400],
+          main: grey[600],
+          dark: grey[800],
           contrastText: "#FFF"
         }
       }
+      
     })
 
     return (
@@ -31,7 +38,7 @@ class App extends Component {
           <Grid item xs={12}>
             <Header />
           </Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} md={7} sm={12}>
             {/* navigation des pages */}
             <Router />
           </Grid>
