@@ -5,6 +5,7 @@ import Menu from "../pages/Menu";
 import Login from "../pages/Login";
 import Admin from "../pages/Admin";
 import ListResto from "../pages/restos/ListResto";
+import Resto from "../pages/restos/Resto";
 
 const loggedIn = false;
 
@@ -12,6 +13,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" exact component={ListResto} />
+      <Route path="/resto/:id" exact component={Resto} />
       <Route path="/menu/:id" exact component={Menu} />
       <Route path="/login" exact component={Login} />
       <Route

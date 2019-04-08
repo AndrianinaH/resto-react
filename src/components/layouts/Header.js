@@ -27,6 +27,7 @@ function Header(props) {
       <AppBar position="sticky" color="primary">
         <Toolbar>
           <Typography
+            align = "center"
             component={Link}
             to="/"
             variant="h6"

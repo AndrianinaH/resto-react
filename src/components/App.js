@@ -42,7 +42,7 @@ class App extends Component {
             <Grid item xs={12}>
               <Header />
             </Grid>
-            <Grid item xs={12} md={7} sm={12}>
+            <Grid item xs={12} lg={7} md={12} sm={12}>
               {/* navigation des pages */}
               <Router />
             </Grid>

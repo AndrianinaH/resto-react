@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { LocalDiningRounded, Restaurant } from "@material-ui/icons";
-import { Route, Link, BrowserRouter, Redirect, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   Card,
@@ -35,14 +35,14 @@ function CardResto(props) {
   const { classes } = props;
   return (
     <Card className={classes.card}>
-      <CardActionArea component={Link} to="/menu/1" >
+      <CardActionArea component={Link} to="/resto/1" >
         <CardHeader
           avatar={<Restaurant color="primary" />}
           classes={{
             title: classes.title
           }}
           title="Mon Super Resto"
-          subheader="Lot 33 Radama Tana"
+          subheader="Lot 33 Radama Tana / 032 66 666 66"
         />
         <CardMedia
           className={classes.media}
@@ -62,7 +62,7 @@ function CardResto(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/menu/1">
+        <Button size="small" color="primary" component={Link} to="/resto/1">
           Detail
         </Button>
       </CardActions>
