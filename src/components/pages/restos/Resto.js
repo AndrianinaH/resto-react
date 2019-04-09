@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-import CardResto from "./CardResto";
-import ContentResto from "./ContentResto";
 import { Grid, Paper } from "@material-ui/core";
+import ContentResto from "./ContentResto";
 import CardCarte from "./CardCarte";
+import Menu from "./Menu";
 
 export class Resto extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ export class Resto extends Component {
     } = this.props;
 
     let menus = this.state.allMenu.map((resto, index) => (
-      <Grid item xs={12} md={6} sm={6}>
-        <CardResto key={index} />
+      <Grid item xs={12}>
+        <Menu key={index} id={index} />
       </Grid>
     ));
 

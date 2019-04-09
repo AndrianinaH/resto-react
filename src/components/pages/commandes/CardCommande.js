@@ -21,12 +21,11 @@ import {
 const styles = theme => ({
   card: {
     minWidth: 275,
-    marginRight: 20
+    marginRight: 20,
+    marginLeft:10
   },
   fab: {
     margin: theme.spacing.unit,
-    // backgroundColor : red[700],
-    // color : grey[50]
   },
   title: {
     fontSize: 24

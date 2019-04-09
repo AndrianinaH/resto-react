@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Link, BrowserRouter, Redirect, Switch } from "react-router-dom";
 
-import Menu from "../pages/Menu";
 import Login from "../pages/Login";
 import Admin from "../pages/Admin";
 import ListResto from "../pages/restos/ListResto";
@@ -14,7 +13,6 @@ function Router() {
     <Switch>
       <Route path="/" exact component={ListResto} />
       <Route path="/resto/:id" exact component={Resto} />
-      <Route path="/menu/:id" exact component={Menu} />
       <Route path="/login" exact component={Login} />
       <Route
         path="/admin"

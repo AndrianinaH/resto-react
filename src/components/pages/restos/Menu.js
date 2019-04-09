@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { cyan, grey } from "@material-ui/core/colors";
-import { EventNote, ShoppingBasket } from "@material-ui/icons";
+import { Restaurant, ShoppingBasket } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 import {
@@ -56,14 +56,14 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9)
 ];
 
-function CardCarte(props) {
-  const { classes } = props;
+function Menu(props) {
+  const { classes,id } = props;
   return (
     <Paper className="papers">
       <Grid container justify="center" alignItems="center">
         <Grid item>
           <Avatar className={classes.avatar}>
-            <EventNote />
+            <Restaurant />
           </Avatar>
         </Grid>
         <Grid item>
@@ -73,7 +73,7 @@ function CardCarte(props) {
             align="center"
             component="h2"
           >
-            La carte
+            Menu Gastronomique {id}
           </Typography>
         </Grid>
       </Grid>
@@ -107,8 +107,8 @@ function CardCarte(props) {
   );
 }
 
-CardCarte.propTypes = {
+Menu.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CardCarte);
+export default withStyles(styles)(Menu);
