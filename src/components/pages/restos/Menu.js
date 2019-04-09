@@ -30,14 +30,16 @@ const styles = theme => ({
     align: "center"
   },
   fab: {
-    margin: theme.spacing.unit,
-    color: theme.palette.primary.main
+    margin: theme.spacing.unit
   },
   avatar: {
     margin: 10,
     fontSize: 50,
     align: "center",
     backgroundColor: cyan[700]
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit
   }
 });
 
@@ -57,7 +59,7 @@ const rows = [
 ];
 
 function Menu(props) {
-  const { classes,id } = props;
+  const { classes, id } = props;
   return (
     <Paper className="papers">
       <Grid container justify="center" alignItems="center">
@@ -81,28 +83,37 @@ function Menu(props) {
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
+            <TableCell>Type</TableCell>
             <TableCell>Nom</TableCell>
             <TableCell>Description</TableCell>
             <TableCell>Prix</TableCell>
-            <TableCell>Ajouter au Panier</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
             <TableRow key={row.id}>
               <TableCell>Image</TableCell>
+              <TableCell>Plat</TableCell>
               <TableCell>Super Resto</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.calories}</TableCell>
-              <TableCell>
-                <Fab aria-label="Add" className={classes.fab}>
-                  <ShoppingBasket />
-                </Fab>
-              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <Grid container justify="center" alignItems="center">
+        <Grid item>
+          <Fab
+            variant="extended"
+            aria-label="Add"
+            color="primary"
+            className={classes.fab}
+          >
+            <ShoppingBasket className={classes.extendedIcon} /> Ajouter à la
+            commande
+          </Fab>
+        </Grid>
+      </Grid>
     </Paper>
   );
 }

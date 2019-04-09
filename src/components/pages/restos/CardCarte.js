@@ -31,7 +31,8 @@ const styles = theme => ({
   },
   fab: {
     margin: theme.spacing.unit,
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
+    backgroundColor: '#fff',
   },
   avatar: {
     margin: 10,
@@ -84,7 +85,7 @@ function CardCarte(props) {
             <TableCell>Nom</TableCell>
             <TableCell>Description</TableCell>
             <TableCell>Prix</TableCell>
-            <TableCell>Ajouter au Panier</TableCell>
+            <TableCell>Commander</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
