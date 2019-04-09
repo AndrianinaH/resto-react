@@ -1,5 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { red,grey } from "@material-ui/core/colors";
+import { Delete } from "@material-ui/icons";
 import {
   Card,
   CardActions,
@@ -12,7 +14,8 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow
+  TableRow,
+  Fab
 } from "@material-ui/core";
 
 const styles = theme => ({
@@ -20,19 +23,23 @@ const styles = theme => ({
     minWidth: 275,
     marginRight: 20
   },
+  fab: {
+    margin: theme.spacing.unit,
+    // backgroundColor : red[700],
+    // color : grey[50]
+  },
   title: {
     fontSize: 24
   },
-  total : {
-    fontSize : 27,
-    marginTop : 20,
+  total: {
+    fontSize: 27,
+    marginTop: 20
   },
-  cash : {
-    fontSize : 20,
-    marginLeft : 20,
-    fontWeight : "bold",
-    color : "grey !important"
-
+  cash: {
+    fontSize: 20,
+    marginLeft: 20,
+    fontWeight: "bold",
+    color: "grey !important"
   },
   table: {}
 });
@@ -66,29 +73,29 @@ function CardCommande(props) {
             <TableRow>
               <TableCell>Resto</TableCell>
               <TableCell>Nom</TableCell>
-              <TableCell align="right">Quantité</TableCell>
-              <TableCell align="right">Prix</TableCell>
+              <TableCell>Quantité</TableCell>
+              <TableCell>Prix</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map(row => (
               <TableRow key={row.id}>
-                <TableCell align="right">Super Resto</TableCell>
-                <TableCell component="th" scope="row">
-                  {row.name}
+                <TableCell>Super Resto</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.calories}</TableCell>
+                <TableCell>{row.fat}</TableCell>
+                <TableCell>
+                  <Fab aria-label="Delete" color="secondary" className={classes.fab}>
+                    <Delete />
+                  </Fab>
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
         <Typography align="right" className={classes.total} color="primary">
-          Total <span className={classes.cash}>2000 $</span> 
+          Total <span className={classes.cash}>2000 $</span>
         </Typography>
-        
-    
-       
       </CardContent>
     </Card>
   );

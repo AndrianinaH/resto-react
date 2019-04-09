@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { LocalDiningRounded, Call, Room } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-
 import {CardMedia, Typography, Chip, Paper } from "@material-ui/core";
 
 const styles = theme => ({
@@ -18,7 +17,7 @@ const styles = theme => ({
   },
   title: {
     color: theme.palette.primary.main
-  }
+  },
 });
 
 function ContentResto(props) {
@@ -57,7 +56,7 @@ function ContentResto(props) {
         title="Contemplative Reptile"
       />
       <br></br>
-      <Typography color="secondary" align="center" paragraph>
+      <Typography align="center" paragraph>
         Text tokony lava lava tsy maintsy Text tokony lava lava tsy maintsy Text
         tokony lava lava tsy maintsy {params.id}
         Text tokony lava lava tsy maintsy Text tokony lava lava tsy maintsy Text

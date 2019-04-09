@@ -5,17 +5,13 @@ import {
   MuiThemeProvider,
   createMuiTheme,
   Grid,
-  Paper
 } from "@material-ui/core";
 import { BrowserRouter } from "react-router-dom";
-import { cyan, grey } from "@material-ui/core/colors";
+import { cyan, red } from "@material-ui/core/colors";
 import Commande from "./pages/commandes/Commande";
 import "./Style.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const theme = createMuiTheme({
@@ -27,11 +23,11 @@ class App extends Component {
           contrastText: "#FFF"
         },
         secondary: {
-          light: grey[400],
-          main: grey[600],
-          dark: grey[800],
+          light: red[400],
+          main: red[600],
+          dark: red[800],
           contrastText: "#FFF"
-        }
+        },
       }
     });
 

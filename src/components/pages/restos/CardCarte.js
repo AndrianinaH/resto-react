@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { cyan } from "@material-ui/core/colors";
+import { cyan,grey } from "@material-ui/core/colors";
 import { EventNote } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   title: {
-    color: theme.palette.secondary.main,
+    color: grey[700],
     fontSize: 20,
     align: "center"
   },
