@@ -78,13 +78,15 @@ export class Resto extends Component {
       <div>
         <Fragment>
           <Grid container spacing={24}>
-            <Grid item xs={12}>
+            <Grid item xs={12} md={2} sm={12}></Grid>
+            <Grid item xs={12} md={8} sm={12}>
               <ContentResto {...this.props} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={2} sm={12}></Grid>
+            <Grid item xs={12} md={6} sm={12}>
               <CardCarte carte={this.state.carte} addCommande={this.addCommande.bind(this)} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6} sm={12}>
               {/* afficher nos commandes */}
               <Commande listCommande={this.state.commande} removeCommande={this.removeCommande.bind(this)} />
             </Grid>

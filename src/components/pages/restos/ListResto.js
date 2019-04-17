@@ -8,7 +8,6 @@ export class ListResto extends Component {
     super(props);
 
     this.state = {
-      allResto: [1, 2, 3, 4, 5, 6, 7, 8],
       restaurants: {}
     };
   }
@@ -26,11 +25,6 @@ export class ListResto extends Component {
 
 
   render() {
-    /*let restos = this.state.allResto.map((resto, index) => (
-      <Grid item xs={12} md={6} sm={6}>
-        <CardResto key={index} />
-      </Grid>
-    ));*/
     console.log(this.state.restaurants);
     let restos = Object.keys(this.state.restaurants).map((key, index) => {
       let el = this.state.restaurants[key];
