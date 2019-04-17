@@ -12,7 +12,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" exact component={ListResto} />
-      <Route path="/resto/:id" exact component={Resto} />
+      <Route path="/resto/:id" exact component={Resto}/>
       <Route path="/login" exact component={Login} />
       <Route
         path="/admin"

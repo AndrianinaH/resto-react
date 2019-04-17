@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { LocalDiningRounded, Call, Room } from "@material-ui/icons";
-import { Link } from "react-router-dom";
 import {CardMedia, Typography, Chip, Paper } from "@material-ui/core";
 
 const styles = theme => ({

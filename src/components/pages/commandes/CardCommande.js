@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { red,grey } from "@material-ui/core/colors";
 import { Delete } from "@material-ui/icons";
 import {
   Card,
@@ -22,7 +21,7 @@ const styles = theme => ({
   card: {
     minWidth: 275,
     marginRight: 20,
-    marginLeft:10
+    marginLeft: 10
   },
   fab: {
     margin: theme.spacing.unit,
@@ -61,6 +60,24 @@ const rows = [
 function CardCommande(props) {
   const { classes } = props;
 
+  let prixTotal = 0;
+
+  let commande = Object.keys(props.listCommande).map((key, index) => {
+    let el = props.listCommande[key];
+    prixTotal += props.listCommande[key].prix;
+    return <TableRow key={index}>
+      <TableCell>Nom Resto</TableCell>
+      <TableCell>{el.nom}</TableCell>
+      <TableCell>{el.quantite}</TableCell>
+      <TableCell>{el.prix}</TableCell>
+      <TableCell>
+        <Fab aria-label="Delete" color="secondary" className={classes.fab} onClick={() => props.removeCommande(key)}> 
+          <Delete />
+        </Fab>
+      </TableCell>
+    </TableRow>
+  })
+
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -77,23 +94,11 @@ function CardCommande(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.id}>
-                <TableCell>Super Resto</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.calories}</TableCell>
-                <TableCell>{row.fat}</TableCell>
-                <TableCell>
-                  <Fab aria-label="Delete" color="secondary" className={classes.fab}>
-                    <Delete />
-                  </Fab>
-                </TableCell>
-              </TableRow>
-            ))}
+            {commande}
           </TableBody>
         </Table>
         <Typography align="right" className={classes.total} color="primary">
-          Total <span className={classes.cash}>2000 $</span>
+          Total <span className={classes.cash}>{prixTotal} MGA</span>
         </Typography>
       </CardContent>
     </Card>
