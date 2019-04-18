@@ -28,7 +28,7 @@ export class ListResto extends Component {
         this.setState({ restaurants: findResult });
       }
     } else {
-      this.setState({ restaurants: this.state.allResto });
+      this.setState({ restaurants: { ...this.state.allResto } });
     }
   }
 
