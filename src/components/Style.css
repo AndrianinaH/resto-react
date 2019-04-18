@@ -15,3 +15,13 @@ a, a:hover{
     text-decoration:none !important;
     cursor: pointer;
 }
+
+.searchIcon{ 
+   position: relative;
+   top: 5px;
+   padding-right: 5px;
+}
+
+.searchInput{ 
+    width: 90%;
+}
