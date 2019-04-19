@@ -69,7 +69,9 @@ export class Resto extends Component {
 
   componentWillMount() {
     const { match: { params } } = this.props;
-    this.ref = base.syncState("cartes/"+params.id, {
+    let restoDecrypt = JSON.parse(atob(params.id))
+    console.log(restoDecrypt)
+    this.ref = base.syncState("cartes/"+restoDecrypt._id, {
       context: this,
       state: "restaurant"
     });
