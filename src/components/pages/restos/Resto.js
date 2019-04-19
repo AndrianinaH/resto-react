@@ -4,6 +4,7 @@ import ContentResto from "./ContentResto";
 import CardCarte from "./CardCarte";
 import Menu from "./Menu";
 import Commande from "../commandes/Commande";
+import base from "../../base";
 
 
 export class Resto extends Component {
@@ -14,6 +15,7 @@ export class Resto extends Component {
       allMenu: [1, 2, 3],
       allCard: [1, 2, 3, 4, 5, 6, 7, 8],
       allPlat: [1, 2, 3, 4, 5, 6, 7, 8],
+      restaurant: {},
       carte: {
         plat0: {
           nom: "ravitoto sy henakisoa",
@@ -65,6 +67,18 @@ export class Resto extends Component {
     });
   }
 
+  componentWillMount() {
+    const { match: { params } } = this.props;
+    this.ref = base.syncState("cartes/"+params.id, {
+      context: this,
+      state: "restaurant"
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
   render() {
     const { match: { params } } = this.props;
 
@@ -80,7 +94,7 @@ export class Resto extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12} md={2} sm={12}></Grid>
             <Grid item xs={12} md={8} sm={12}>
-              <ContentResto {...this.props} />
+              <ContentResto {...this.props} detail={this.state.restaurant} />
             </Grid>
             <Grid item xs={12} md={2} sm={12}></Grid>
             <Grid item xs={12} md={6} sm={12}>

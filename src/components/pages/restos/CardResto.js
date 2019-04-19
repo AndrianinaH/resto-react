@@ -35,7 +35,7 @@ function CardResto(props) {
   const { classes } = props;
   return (
     <Card className={classes.card}>
-      <CardActionArea component={Link} to={"/resto/" + props.restaurant.id} >
+      <CardActionArea component={Link} to={"/resto/" + props.restaurant._id} >
         <CardHeader
           avatar={<Restaurant color="primary" />}
           classes={{ title: classes.title }}
