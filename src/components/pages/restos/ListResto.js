@@ -10,26 +10,13 @@ export class ListResto extends Component {
 
     this.state = {
       restaurants: {},
-      allResto: {}
+      searchText : ""
     };
   }
 
   findResto() {
-    let textSearch = this.inputSearch.value;
-    console.log(textSearch);
-    if (textSearch != "") {
-      if (this.state.restaurants.length !== 0) {
-        let findResult = this.state.restaurants.filter(resto => {
-          return (
-            resto.cuisine.includes(textSearch) || resto.nom.includes(textSearch)
-          );
-        });
-        console.log(findResult);
-        this.setState({ restaurants: findResult });
-      }
-    } else {
-      this.setState({ restaurants: { ...this.state.allResto } });
-    }
+    let textSearch = this.inputSearch.value.toLowerCase();
+    this.setState({searchText:textSearch})
   }
 
   componentWillMount() {
@@ -37,20 +24,31 @@ export class ListResto extends Component {
       context: this,
       state: "restaurants"
     });
-    this.setState({ allResto: { ...this.state.restaurants } });
   }
 
   componentWillUnmount() {
     base.removeBinding(this.restoRef);
   }
 
+
   render() {
-    console.log(this.state.restaurants);
-    let restos = Object.keys(this.state.restaurants).map((key, index) => {
-      let el = this.state.restaurants[key];
+    const { restaurants,searchText } = this.state;
+
+    let restoFiltered = Object.keys(restaurants).map((key, index) => {
       return (
-        <Grid item xs={12} md={6} sm={6}>
-          <CardResto key={index} restaurant={el} />
+        restaurants[key]
+      )
+    }).filter((resto) => {
+      return resto.nom.toLowerCase().includes(searchText) ||
+      resto.cuisine.toLowerCase().includes(searchText)
+      
+    });
+
+    let restos = Object.keys(restoFiltered).map((key, index) => {
+      let el = restoFiltered[key];
+      return (
+        <Grid key={el._id} item xs={12} md={6} sm={6}>
+          <CardResto restaurant={el} />
         </Grid>
       );
     });
@@ -79,7 +77,7 @@ export class ListResto extends Component {
                 inputRef={input => (this.inputSearch = input)}
                 className="searchInput"
                 align="center"
-                placeholder="Rechercher..."
+                placeholder="Rechercher un Nom de resto ou type de cuisine..."
               />
             </Paper>
           </Grid>
