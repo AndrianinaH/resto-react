@@ -4,9 +4,9 @@ import CardCommande from './CardCommande';
 export class Commande extends Component {
   render() {
     return (
-      <Fragment>
+      <div className="sticky">
         <CardCommande listCommande={this.props.listCommande} removeCommande={this.props.removeCommande}/>
-      </Fragment>
+      </div>
     )
   }
 }

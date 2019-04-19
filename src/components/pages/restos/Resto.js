@@ -6,7 +6,6 @@ import Menu from "./Menu";
 import Commande from "../commandes/Commande";
 import base from "../../base";
 
-
 export class Resto extends Component {
   constructor(props) {
     super(props);
@@ -50,13 +49,13 @@ export class Resto extends Component {
     if (copieCommande[keyCommande]) {
       copieCommande[keyCommande].quantite++;
     } else {
-      copieCommande[keyCommande] = Object.assign({}, value, { "quantite": 1 });
+      copieCommande[keyCommande] = Object.assign({}, value, { quantite: 1 });
     }
     copieCommande[keyCommande].prix *= copieCommande[keyCommande].quantite;
 
     this.setState({
       commande: copieCommande
-    })
+    });
   }
 
   removeCommande(key) {
@@ -68,10 +67,12 @@ export class Resto extends Component {
   }
 
   componentWillMount() {
-    const { match: { params } } = this.props;
-    let restoDecrypt = JSON.parse(atob(params.id))
-    console.log(restoDecrypt)
-    this.ref = base.syncState("cartes/"+restoDecrypt._id, {
+    const {
+      match: { params }
+    } = this.props;
+    let restoDecrypt = JSON.parse(atob(params.id));
+    console.log(restoDecrypt);
+    this.ref = base.syncState("cartes/" + restoDecrypt._id, {
       context: this,
       state: "restaurant"
     });
@@ -82,11 +83,13 @@ export class Resto extends Component {
   }
 
   render() {
-    const { match: { params } } = this.props;
+    const {
+      match: { params }
+    } = this.props;
 
     let menus = this.state.allMenu.map((resto, index) => (
-      <Grid item xs={12}>
-        <Menu key={index} id={index} />
+      <Grid key={index} item xs={12}>
+        <Menu id={index} />
       </Grid>
     ));
 
@@ -94,17 +97,28 @@ export class Resto extends Component {
       <div>
         <Fragment>
           <Grid container spacing={24}>
-            <Grid item xs={12} md={2} sm={12}></Grid>
+            <Grid item xs={12} md={2} sm={12} />
             <Grid item xs={12} md={8} sm={12}>
               <ContentResto {...this.props} detail={this.state.restaurant} />
             </Grid>
-            <Grid item xs={12} md={2} sm={12}></Grid>
+            <Grid item xs={12} md={2} sm={12} />
             <Grid item xs={12} md={6} sm={12}>
-              <CardCarte carte={this.state.carte} addCommande={this.addCommande.bind(this)} />
+              <Grid container spacing={24}>
+                <Grid item xs={12}>
+                  <CardCarte
+                    carte={this.state.carte}
+                    addCommande={this.addCommande.bind(this)}
+                  />
+                </Grid>
+                {menus}
+              </Grid>
             </Grid>
             <Grid item xs={12} md={6} sm={12}>
               {/* afficher nos commandes */}
-              <Commande listCommande={this.state.commande} removeCommande={this.removeCommande.bind(this)} />
+              <Commande
+                listCommande={this.state.commande}
+                removeCommande={this.removeCommande.bind(this)}
+              />
             </Grid>
           </Grid>
         </Fragment>
