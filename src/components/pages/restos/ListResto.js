@@ -47,7 +47,7 @@ export class ListResto extends Component {
     let restos = Object.keys(restoFiltered).map((key, index) => {
       let el = restoFiltered[key];
       return (
-        <Grid key={el._id} item xs={12} md={6} sm={6}>
+        <Grid key={el._id} item xs={12} lg={4} md={6} sm={12}>
           <CardResto restaurant={el} />
         </Grid>
       );

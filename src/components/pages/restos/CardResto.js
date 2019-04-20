@@ -60,7 +60,7 @@ function CardResto(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to={"/resto/" + props.restaurant.id}>
+        <Button size="small" color="primary" component={Link} to={"/resto/" + restoCrypt}>
           Detail
         </Button>
       </CardActions>
