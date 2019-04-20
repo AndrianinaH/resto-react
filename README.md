@@ -2,8 +2,12 @@ Resto
 Projet MBDS - REACT Firebase.
 
 RAKOTOARISOA Hasina Andrianina rakotoandrianina@gmail.com
+
 ANDRIAMAMPIONONA Kevin Mahery maherykevin03@gmail.com
+
+
 Description
+
 Mini Projet - un gestionnaire de menus / cartes pour des restaurants
 Objectifs : application Web permettant en mode utilisateur de chercher des restaurants, et une fois qu'on a trouvé un restaurant de consulter ses menus et sa carte afin d'effectuer des commandes.
 
