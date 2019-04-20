@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Delete } from "@material-ui/icons";
+import NumberFormat from 'react-number-format';
 import {
   Card,
   CardActions,
@@ -66,10 +67,10 @@ function CardCommande(props) {
     let el = props.listCommande[key];
     prixTotal += props.listCommande[key].prix;
     return <TableRow key={index}>
-      <TableCell>Nom Resto</TableCell>
+      <TableCell>{el.resto}</TableCell>
       <TableCell>{el.nom}</TableCell>
       <TableCell>{el.quantite}</TableCell>
-      <TableCell>{el.prix}</TableCell>
+      <TableCell><NumberFormat value={el.prix} displayType={'text'} thousandSeparator={true}/></TableCell>
       <TableCell>
         <Fab aria-label="Delete" color="secondary" className={classes.fab} onClick={() => props.removeCommande(key)}> 
           <Delete />
@@ -91,6 +92,7 @@ function CardCommande(props) {
               <TableCell>Nom</TableCell>
               <TableCell>Quantité</TableCell>
               <TableCell>Prix</TableCell>
+              <TableCell>-</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -98,7 +100,7 @@ function CardCommande(props) {
           </TableBody>
         </Table>
         <Typography align="right" className={classes.total} color="primary">
-          Total <span className={classes.cash}>{prixTotal} MGA</span>
+          Total <span className={classes.cash}><NumberFormat value={prixTotal} displayType={'text'} thousandSeparator={true}/> MGA</span>
         </Typography>
       </CardContent>
     </Card>

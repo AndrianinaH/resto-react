@@ -27,10 +27,11 @@ function ContentResto(props) {
   let adresse = props.detail.adresse;
   let about = props.detail.description;
   let image = props.detail.image;
+  let nom = "Restaurant " + props.detail.nom;
   return (
     <Paper className="papers" align="center">
       <Typography variant="h6" color="primary" align="center" component="h2">
-        Restaurant
+        {nom}
       </Typography>
       <Chip
         icon={<LocalDiningRounded />}

@@ -15,43 +15,23 @@ export class Resto extends Component {
       allCard: [1, 2, 3, 4, 5, 6, 7, 8],
       allPlat: [1, 2, 3, 4, 5, 6, 7, 8],
       restaurant: {},
-      carte: {
-        plat0: {
-          nom: "ravitoto sy henakisoa",
-          type: "plat",
-          description: "riz, viande de porc et ravitoto",
-          photo: "photo",
-          prix: 3000
-        },
-        plat1: {
-          nom: "salade cézar",
-          type: "hors d'oeuvre",
-          description: "salade verte, tomate, jambon cru, oeuf dur",
-          photo: "photo",
-          prix: 5000
-        },
-        plat2: {
-          nom: "tarte au citron",
-          type: "dessert",
-          description: "citron",
-          photo: "photo",
-          prix: 35000
-        }
-      },
+      desserts: {},
+      plats: {},
+      oeuvres: {},
+      menus: {},
       commande: {}
     };
   }
 
-  addCommande(value, key) {
+  addCommande(value, key, resto) {
     const copieCommande = { ...this.state.commande };
-    const keyCommande = "commande" + key;
 
-    if (copieCommande[keyCommande]) {
-      copieCommande[keyCommande].quantite++;
+    if (copieCommande[key]) {
+      copieCommande[key].quantite++;
     } else {
-      copieCommande[keyCommande] = Object.assign({}, value, { quantite: 1 });
+      copieCommande[key] = Object.assign({}, value, { quantite: 1, resto: resto });
     }
-    copieCommande[keyCommande].prix *= copieCommande[keyCommande].quantite;
+    copieCommande[key].prix *= copieCommande[key].quantite;
 
     this.setState({
       commande: copieCommande
@@ -67,31 +47,60 @@ export class Resto extends Component {
   }
 
   componentWillMount() {
-    const {
-      match: { params }
-    } = this.props;
+    const { match: { params } } = this.props;
     let restoDecrypt = JSON.parse(atob(params.id));
-    console.log(restoDecrypt);
     this.ref = base.syncState("cartes/" + restoDecrypt._id, {
       context: this,
-      state: "restaurant"
+      state: "restaurant",
+      then() {
+        this.setState({ desserts: { ...this.state.restaurant.plats.dessert } });
+        this.setState({ oeuvres: { ...this.state.restaurant.plats.oeuvre } });
+        this.setState({ plats: { ...this.state.restaurant.plats.plat } });
+        this.setState({ menus: { ...this.state.restaurant.menus } });
+      }
     });
   }
 
+  componentDidMount() {
+    this.hydrateStateWithLocalStorage();
+
+    // add event listener to save state to localStorage
+    // when user leaves/refreshes the page
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+  }
+
   componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+    this.saveStateToLocalStorage();
     base.removeBinding(this.ref);
   }
 
-  render() {
-    const {
-      match: { params }
-    } = this.props;
+  saveStateToLocalStorage() {
+      localStorage.setItem("commande", JSON.stringify(this.state.commande));
+  }
 
-    let menus = this.state.allMenu.map((resto, index) => (
-      <Grid key={index} item xs={12}>
-        <Menu id={index} />
-      </Grid>
-    ));
+  hydrateStateWithLocalStorage() {
+    if(localStorage.hasOwnProperty("commande")) {
+      let value = localStorage.getItem("commande");
+      try {
+        value = JSON.parse(value);
+        this.setState({ commande : value });
+      } catch (e) {
+        // handle empty string
+        this.setState({ commande : value });
+      }
+    }
+  }
+
+  render() {
+    const { match: { params } } = this.props;
+    let restoDecrypt = JSON.parse(atob(params.id));
 
     return (
       <div>
@@ -99,7 +108,7 @@ export class Resto extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12} md={2} sm={12} />
             <Grid item xs={12} md={8} sm={12}>
-              <ContentResto {...this.props} detail={this.state.restaurant} />
+              <ContentResto {...this.props} detail={restoDecrypt} />
             </Grid>
             <Grid item xs={12} md={2} sm={12} />
             <Grid item xs={12} md={6} sm={12}>
@@ -108,9 +117,15 @@ export class Resto extends Component {
                   <CardCarte
                     carte={this.state.carte}
                     addCommande={this.addCommande.bind(this)}
+                    dessert={this.state.desserts}
+                    oeuvre={this.state.oeuvres}
+                    plat={this.state.plats}
+                    menu={this.state.menus}
+                    idResto={restoDecrypt._id}
+                    resto={restoDecrypt.nom}
                   />
                 </Grid>
-                {menus}
+
               </Grid>
             </Grid>
             <Grid item xs={12} md={6} sm={12}>
